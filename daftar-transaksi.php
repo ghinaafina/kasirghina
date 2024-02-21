@@ -33,6 +33,7 @@ include("header.php");
 				<th>No</th>
 				<th>Tanggal Transaksi</th>
         <th>Nama Pemesan</th>
+        <th>No Meja</th>
 				<th>Menu</th>	
 			</tr>
 		</thead>
@@ -46,14 +47,15 @@ include("header.php");
               <tr>
                 <td><?php echo $data['id_penjualan']?></td>
                 <td><?php echo $data['tanggal_penjualan']?></td>
-                <td>
-                  <?php
+               
+                <?php
                     $sql2 = $koneksi->query("SELECT * FROM pelanggan WHERE id_pelanggan = '".$data['id_penjualan']."'");
                     while ($data2= $sql2->fetch_assoc()) {
-                      echo $data2['nama_pelanggan'];
-                    }
-                  ?>
-                </td>
+                      ?>
+                    <td><?php echo $data2['nama_pelanggan']; ?> </td>
+                    <td><?php echo $data2['no_meja']; ?> </td>
+                  <?php } ?>
+
                 <td>
                     <table class="table table-bordered">
                         <thead>
@@ -105,7 +107,7 @@ include("header.php");
                 <?php
                 echo "</tr>";
             }
-              
+          
         ?>
 		</tbody>
 	</table>
